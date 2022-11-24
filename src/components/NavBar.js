@@ -27,8 +27,6 @@ export default function NavBar(){
                 <div className="navbar-content">
                     <button onClick={goToHome}>Home</button>
                     <button onClick={goToShop}>Shop</button>
-                    <button onClick={goToAdmin}>Admin</button>
-                    
                 </div>
             </div>
         </div>

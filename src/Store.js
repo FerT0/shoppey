@@ -3,7 +3,9 @@ import React, { useState, useEffect } from "react"
 import NavBar from "./components/NavBar"
 import setIcon from './components/SetIcon'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faShoppingCart, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faShoppingCart, faArrowLeft, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { slide as Menu } from 'react-burger-menu'
+
 
 
 
@@ -169,7 +171,10 @@ export default function App() {
         <>
         
         <div className="products">
-            <button className="cart-btn" onClick={ () => navigateTo(PAGE_CART)}><FontAwesomeIcon icon={faShoppingCart}/></button>
+            {loading && (
+                <div className="sbl-circ-path"></div>
+            )}
+            
             <div className="products-sidebar">
                     <div className="products-search">
                         <form onSubmit={searchProduct}>
@@ -185,20 +190,22 @@ export default function App() {
                         ))}
                     </div>
             </div>
+            <Menu>
+                <div className="burger-menu-categories">
+                    <p>Categories</p>
+                    {categories.map((category) => (
+                        <button key={category} onClick={() => getProductsOfCategory(category)}>{category}</button>
+                    ))}
+                </div>
+            </Menu>
                 <div className="categories-back-title">
                     {viewingCategory !== "Products" &&
                     <button onClick={() => goBack()}><FontAwesomeIcon icon={faArrowLeft}/></button>
                     }
                     <h2>{viewingCategory}</h2>
                 </div>
+                <button className="cart-btn" onClick={ () => navigateTo(PAGE_CART)}><FontAwesomeIcon icon={faShoppingCart}/></button>
                 <div className="products-container">
-                    {loading && (
-                    <div className="sbl-circ-path"></div>
-                )}
-
-
-
-                
                 {data.map((product) => (
                     <div key={product.id} className="card">
                         <div className="card-icon">{setIcon(product.category)}</div>
@@ -225,21 +232,26 @@ export default function App() {
 
     const renderCart = () => (
         <>
-        <h1>Cart</h1>
-        <button onClick={() => navigateTo(PAGE_PRODUCTS)}>go back</button>
+        <div className="cart-categories-back-title">
+                    <button onClick={() => navigateTo(PAGE_PRODUCTS)}><FontAwesomeIcon icon={faArrowLeft}/></button>
+                    <h2>Cart</h2>
+        </div>
+
+        <div className="cart-container">
         {fixedCart.map((product) => (
-                <div key={product.id} className="card">
-                    <div></div>
-                    <div>{setIcon(product.category)}</div>
-                    <div className="card-description">
-                        <h2>{product.title}</h2>
-                        <h2>{product.description}</h2>
-                        <h2>{product.price}</h2>
-                        <h2>{product.category}</h2>
+                <div key={product.id} className="cart-card">
+                    <div className="cart-card-icon">{setIcon(product.category)}</div>
+                    <div className="cart-card-description">
+                        <h2 id="cart-card-title">{product.title}</h2>
+                        <h2 id="cart-card-price">${product.price}</h2>
+                        <h2 id="cart-card-desc">{product.description}</h2>
                     </div>
-                    <button onClick={() => removeFromCart(product)}>Remove</button>
+                    <div className="remove-cart">
+                        <button id="remove-cart-btn" onClick={() => removeFromCart(product)}><FontAwesomeIcon icon={faTrashCan}/></button>
+                    </div>
                 </div>
         ))}
+        </div>
         </>
     );
     

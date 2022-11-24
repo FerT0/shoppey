@@ -4,8 +4,10 @@ import React, { useState, useEffect } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMobileScreenButton, faBagShopping, faCouch, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import imagef from "./components/images/content1.png"
+import banner from "./components/images/banner.png"
 import { useNavigate } from "react-router"
 import setIcon from './components/SetIcon'
+import logo from "./components/images/logo.png"
 
 
 export default function App() {
@@ -16,7 +18,7 @@ export default function App() {
     useEffect(() => {
         axios({
             method:"GET",
-            url:"https://dummyjson.com/products?limit=5"
+            url:"https://dummyjson.com/products?limit=6"
         }).then(res => {
             setData(res.data.products)
         }).catch(e => console.log(e))        
@@ -102,60 +104,34 @@ export default function App() {
 
                 </div>
                 <div className="snd-content-btn">
-                    <button>Browse more</button>
+                    <button onClick={goToShop}>Browse more</button>
                 </div>
-            </div>
-            <div className="third-content-title">
-                <h1>Latest products</h1>
             </div>
             <div className="third-content">
-                <div className="third-content-cards">
-                {data.map((product) => (
-                <div key={product.id} className="home-products-card">
-                    <div></div>
-                    <div className="home-products-card-description">
-                        <div className="icon-space">
-                            <div className="icon1 icon-thrd">
-                                <FontAwesomeIcon icon={faMobileScreenButton} />
-                            </div>
-                        </div>
-                        <div className="crd-title">
-                            <h1>{product.title}</h1>
-                        </div>
-                        <div className="crd-price">
-                            <h2>${product.price}</h2>
-                        </div>
-                        <div className="crd-shipping">
-                            <h2>Free shipping</h2>
-                        </div>    
-                        <div className="crd-description">
-                            <h3 id="crd-h3-description">{product.description}</h3>
-                        </div>
-                        
-                    </div>
-                </div>
-                ))}
-                </div>
+                <img onClick={goToShop} src={banner} alt=""></img>
             </div>
-            <div className="third-end-more">
-                <h2>Not what you're looking for?</h2>
-            </div>
-            <div className="third-end-more-btn">
-                <button>See more</button>
-            </div>
+           
             
 
 
             <footer>
                 <div className="footer-content">
                     <div className="first-footer-content">
-                        <h1>Paga con tarjeta</h1>
+                        <img src={logo} alt="shoppey"></img>
+                        <h2>Shoppey</h2>
                     </div>
                     <div className="second-footer-content">
-                        <h1>Envio gratis</h1>
+                        <h3>About us</h3>
+                        <h3>Privacy policy</h3>
+                        <h3>Loyalty program</h3>
+                        <h3>Our stores</h3>
+                        <h3>Advertise your product</h3>
                     </div>
                     <div className="third-footer-content">
-                        <h1>Seguridad</h1>
+                        <h1>Contact us!</h1>
+                        <input placeholder="Name..."></input>
+                        <textarea placeholder="Message..."></textarea>
+                        <button>Send</button>
                     </div>
                 </div>
 
