@@ -1,36 +1,15 @@
 import React from "react";
 import clsx from "clsx";
 import { link as linkStyles } from "@nextui-org/theme";
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Divider,
-  Image,
-} from "@nextui-org/react";
+import { Divider } from "@nextui-org/react";
 
-import Link from "next/link";
-
-import {
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-  Button,
-} from "@nextui-org/react";
+import { Popover, PopoverTrigger, PopoverContent } from "@nextui-org/react";
+import { siteConfig } from "@/config/site";
 
 import { ChevronDown } from "./icons";
 import CategoryDropdownCard from "./category-dropdown-card";
 
 export default function CategoryDropdown() {
-  const categories = [
-    { name: "furniture" },
-    { name: "handbags" },
-    { name: "shoes" },
-    { name: "headphones" },
-    { name: "technology" },
-    { name: "books" },
-  ];
   return (
     <>
       <Popover placement="bottom" showArrow={true}>
@@ -52,7 +31,7 @@ export default function CategoryDropdown() {
             </div>
             <Divider className="my-4" />
             <div className="items-center text-small grid grid-rows-3 grid-cols-2">
-              {categories.map((category) => (
+              {siteConfig.categories.map((category) => (
                 <div key={category.name}>
                   <CategoryDropdownCard name={category.name} />
                 </div>

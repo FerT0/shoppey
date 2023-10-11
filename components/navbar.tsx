@@ -40,6 +40,10 @@ export const Navbar = () => {
     />
   );
 
+  const handleRefresh = (): void => {
+    window.location.href = "/";
+  };
+
   const { sessionData, setSessionData, loading, setLoading } =
     useUserDataContext();
 
@@ -52,7 +56,7 @@ export const Navbar = () => {
             <p className="font-bold text-inherit">SHOPPEY</p>
           </NextLink>
         </NavbarBrand>
-        <ul className="hidden lg:flex gap-4 justify-start ml-2">
+        <ul className="hidden md:flex gap-4 justify-start ml-2">
           <NavbarItem>
             <CategoryDropdown />
           </NavbarItem>
@@ -96,14 +100,14 @@ export const Navbar = () => {
       </NavbarContent>
 
       <NavbarContent
-        className="hidden sm:flex basis-1/5 sm:basis-full"
+        className="hidden md:flex basis-1/5 sm:basis-full"
         justify="end"
       >
         <NavbarItem className="hidden sm:flex gap-2">
           <ThemeSwitch />
         </NavbarItem>
         <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
-        {sessionData !== null && (
+        {sessionData !== null && loading === false && (
           <NavbarItem className="hidden md:flex">
             <NextLink href="/cart">
               <Button
@@ -122,7 +126,7 @@ export const Navbar = () => {
         </NavbarItem>
       </NavbarContent>
 
-      <NavbarContent className="sm:hidden basis-1 pl-4">
+      <NavbarContent className="md:hidden basis-1 pl-4" justify="end">
         <ThemeSwitch />
         <NavbarMenuToggle />
       </NavbarContent>
@@ -130,23 +134,83 @@ export const Navbar = () => {
       <NavbarMenu>
         {searchInput}
         <div className="mx-4 mt-2 flex flex-col gap-2">
-          {siteConfig.navMenuItems.map((item, index) => (
-            <NavbarMenuItem key={`${item}-${index}`}>
-              <Link
-                color={
-                  index === 2
-                    ? "primary"
-                    : index === siteConfig.navMenuItems.length - 1
-                    ? "danger"
-                    : "foreground"
-                }
-                href="#"
-                size="lg"
-              >
-                {item.label}
-              </Link>
-            </NavbarMenuItem>
-          ))}
+          {sessionData !== null && (
+            <>
+              <NavbarMenuItem>
+                <Link size="lg" href="/store" color="foreground">
+                  Shop now
+                </Link>
+              </NavbarMenuItem>
+              <NavbarMenuItem>
+                <Link size="lg" href="/store" color="foreground">
+                  Deals
+                </Link>
+              </NavbarMenuItem>
+              <NavbarMenuItem>
+                <Link size="lg" href="/store" color="foreground">
+                  What's new
+                </Link>
+              </NavbarMenuItem>
+              <NavbarMenuItem>
+                <Link size="lg" href="/store" color="foreground">
+                  Cart
+                </Link>
+              </NavbarMenuItem>
+              <NavbarMenuItem>
+                <Link size="lg" href="/store" color="foreground">
+                  My products
+                </Link>
+              </NavbarMenuItem>
+              <NavbarMenuItem>
+                <PhoneMenuAccordion />
+              </NavbarMenuItem>
+              <NavbarMenuItem>
+                <Link
+                  size="lg"
+                  color="danger"
+                  onClick={() => {
+                    signOut().then(() => handleRefresh());
+                  }}
+                >
+                  Sign Out
+                </Link>
+              </NavbarMenuItem>
+            </>
+          )}
+
+          {sessionData === null && (
+            <>
+              <NavbarMenuItem>
+                <Link size="lg" href="/store" color="foreground">
+                  Shop now
+                </Link>
+              </NavbarMenuItem>
+              <NavbarMenuItem>
+                <Link size="lg" href="/store" color="foreground">
+                  Deals
+                </Link>
+              </NavbarMenuItem>
+              <NavbarMenuItem>
+                <Link size="lg" href="/store" color="foreground">
+                  What's new
+                </Link>
+              </NavbarMenuItem>
+              <NavbarMenuItem>
+                <PhoneMenuAccordion />
+              </NavbarMenuItem>
+              <NavbarMenuItem>
+                <Link
+                  size="lg"
+                  color="primary"
+                  onClick={() => {
+                    signInWithGoogle();
+                  }}
+                >
+                  Sign In
+                </Link>
+              </NavbarMenuItem>
+            </>
+          )}
         </div>
       </NavbarMenu>
     </NextUINavbar>

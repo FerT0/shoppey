@@ -12,8 +12,8 @@ import UserDataContext from "./contexts/userdata-context";
 
 export const metadata: Metadata = {
   title: {
-    default: siteConfig.name,
-    template: `%s - ${siteConfig.name}`,
+    default: "Shoppey",
+    template: "Shoppey",
   },
   description: siteConfig.description,
   themeColor: [
@@ -55,7 +55,7 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <Providers themeProps={{ attribute: "class", defaultTheme: "light" }}>
+        <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
           <div className="relative flex flex-col h-screen">
             <UserDataContext.Provider
               value={{ sessionData, setSessionData, loading, setLoading }}

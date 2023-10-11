@@ -37,4 +37,13 @@ export const siteConfig = {
       href: "/logout",
     },
   ],
+
+  categories: [
+    { name: "furniture" },
+    { name: "handbags" },
+    { name: "shoes" },
+    { name: "headphones" },
+    { name: "technology" },
+    { name: "books" },
+  ],
 };
