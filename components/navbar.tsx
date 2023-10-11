@@ -22,6 +22,9 @@ import ProfileDropdown from "./profile-dropdown";
 import { Logo } from "@/components/icons";
 import { useUserDataContext } from "@/app/contexts/userdata-context";
 import CategoryDropdown from "./category-dropdown";
+import PhoneMenuAccordion from "./phone-menu-accordion";
+import { signInWithGoogle } from "@/app/connections/signIn";
+import { signOut } from "@/app/connections/signOut";
 
 export const Navbar = () => {
   const searchInput = (
