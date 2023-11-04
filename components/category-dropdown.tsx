@@ -17,7 +17,7 @@ export default function CategoryDropdown() {
           <a
             className={clsx(
               linkStyles({ color: "foreground" }),
-              "data-[active=true]:text-primary data-[active=true]:font-medium cursor-pointer flex gap-2"
+              "data-[active=true]:text-primary data-[active=true]:font-medium cursor-pointer flex gap-2 font-medium"
             )}
           >
             Category

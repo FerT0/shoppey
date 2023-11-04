@@ -67,7 +67,7 @@ export const Navbar = () => {
             <NextLink
               className={clsx(
                 linkStyles({ color: "foreground" }),
-                "data-[active=true]:text-primary data-[active=true]:font-medium"
+                "data-[active=true]:text-primary data-[active=true]:font-medium font-medium"
               )}
               color="foreground"
               href="#"
@@ -79,7 +79,7 @@ export const Navbar = () => {
             <NextLink
               className={clsx(
                 linkStyles({ color: "foreground" }),
-                "data-[active=true]:text-primary data-[active=true]:font-medium"
+                "data-[active=true]:text-primary data-[active=true]:font-medium font-medium"
               )}
               color="foreground"
               href="#"
@@ -91,7 +91,7 @@ export const Navbar = () => {
             <NextLink
               className={clsx(
                 linkStyles({ color: "foreground" }),
-                "data-[active=true]:text-primary data-[active=true]:font-medium"
+                "data-[active=true]:text-primary data-[active=true]:font-medium font-medium"
               )}
               color="foreground"
               href="/store"
@@ -106,9 +106,6 @@ export const Navbar = () => {
         className="hidden md:flex basis-1/5 sm:basis-full"
         justify="end"
       >
-        <NavbarItem className="hidden sm:flex gap-2">
-          <ThemeSwitch />
-        </NavbarItem>
         <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
         {sessionData !== null && loading === false && (
           <NavbarItem className="hidden md:flex">
@@ -130,7 +127,6 @@ export const Navbar = () => {
       </NavbarContent>
 
       <NavbarContent className="md:hidden basis-1 pl-4" justify="end">
-        <ThemeSwitch />
         <NavbarMenuToggle />
       </NavbarContent>
 

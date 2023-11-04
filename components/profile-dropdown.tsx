@@ -14,8 +14,10 @@ import { CartIcon } from "./icons";
 import { signInWithGoogle } from "@/app/connections/signIn";
 import { signOut } from "@/app/connections/signOut";
 import { useUserDataContext } from "@/app/contexts/userdata-context";
+import { useRouter } from "next/navigation";
 
 export default function ProfileDropdown() {
+  const router = useRouter();
   const handleRefresh = (): void => {
     window.location.href = "/";
   };
@@ -36,6 +38,7 @@ export default function ProfileDropdown() {
             base: "p-0 border-small border-divider bg-background",
             arrow: "bg-default-200",
           }}
+          closeOnSelect={false}
         >
           <DropdownTrigger>
             <Avatar
@@ -91,11 +94,13 @@ export default function ProfileDropdown() {
               </DropdownItem>
               <DropdownItem key="dashboard">Dashboard</DropdownItem>
               <DropdownItem key="settings">Settings</DropdownItem>
+
               <DropdownItem
                 key="new_project"
                 endContent={<CartIcon className="text-large" />}
+                onClick={() => router.push("/myproducts")}
               >
-                New Project
+                My Products
               </DropdownItem>
             </DropdownSection>
 
@@ -130,7 +135,9 @@ export default function ProfileDropdown() {
               <DropdownItem
                 key="logout"
                 onClick={() => {
-                  signOut().then(() => handleRefresh());
+                  signOut()
+                    .then(() => handleRefresh())
+                    .finally(() => setSessionData(null));
                 }}
               >
                 Sign Out
@@ -150,10 +157,10 @@ export default function ProfileDropdown() {
         >
           <DropdownTrigger>
             <Avatar
-              isBordered
               src=""
               size="sm"
               className="hover:cursor-pointer"
+              isBordered
             />
           </DropdownTrigger>
           <DropdownMenu
@@ -182,7 +189,7 @@ export default function ProfileDropdown() {
                   signInWithGoogle();
                 }}
               >
-                Sign In
+                <p className="font-medium">Sign In</p>
               </DropdownItem>
             </DropdownSection>
           </DropdownMenu>

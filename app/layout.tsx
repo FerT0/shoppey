@@ -4,10 +4,10 @@ import { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
 import { Providers } from "./providers";
-import { Navbar } from "@/components/navbar";
 import clsx from "clsx";
 import { useEffect, useState } from "react";
 import { getCurrentSession } from "./connections/getSession";
+import { getAllProducts } from "./connections/getAllProducts";
 import UserDataContext from "./contexts/userdata-context";
 
 export const metadata: Metadata = {
@@ -32,13 +32,16 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const [sessionData, setSessionData] = useState<any | null>([]);
+  const [sessionData, setSessionData] = useState(null);
+  const [productsData, setProductsData] = useState(null);
   const [loading, setLoading] = useState<boolean>(true);
 
   const fetchData = async () => {
     const responseSession = await getCurrentSession();
+    const responseProducts = await getAllProducts();
 
     setSessionData(responseSession.data.session);
+    setProductsData(responseProducts);
   };
 
   useEffect(() => {
@@ -55,10 +58,17 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
+        <Providers themeProps={{ attribute: "class", defaultTheme: "light" }}>
           <div className="relative flex flex-col h-screen">
             <UserDataContext.Provider
-              value={{ sessionData, setSessionData, loading, setLoading }}
+              value={{
+                sessionData,
+                setSessionData,
+                loading,
+                setLoading,
+                productsData,
+                setProductsData,
+              }}
             >
               {children}
             </UserDataContext.Provider>

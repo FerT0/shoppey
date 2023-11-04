@@ -2,6 +2,8 @@ import { Link } from "@nextui-org/link";
 import { button as buttonStyles } from "@nextui-org/theme";
 import { title, subtitle } from "@/components/primitives";
 import { Navbar } from "@/components/navbar";
+import CategoriesLanding from "@/components/categories-landing";
+import DealsLanding from "@/components/deals-landing";
 
 export default function Home() {
   return (
@@ -30,6 +32,8 @@ export default function Home() {
             </Link>
           </div>
         </section>
+        <CategoriesLanding />
+        <DealsLanding />
       </main>
     </>
   );
