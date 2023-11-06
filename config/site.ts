@@ -40,9 +40,9 @@ export const siteConfig = {
 
   categories: [
     { name: "furniture" },
-    { name: "handbags" },
+    { name: "bags" },
     { name: "shoes" },
-    { name: "headphones" },
+    { name: "travel" },
     { name: "technology" },
     { name: "books" },
   ],

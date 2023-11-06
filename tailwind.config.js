@@ -16,6 +16,9 @@ module.exports = {
       height: {
         clamp: "clamp(15rem, 17vw, 30rem)",
       },
+      backgroundImage: {
+        banner: "url('/images/background.png')",
+      },
     },
   },
   darkMode: "class",

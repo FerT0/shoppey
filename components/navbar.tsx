@@ -13,10 +13,8 @@ import { Button } from "@nextui-org/button";
 import { Link } from "@nextui-org/link";
 import { Input } from "@nextui-org/input";
 import { link as linkStyles } from "@nextui-org/theme";
-import { siteConfig } from "@/config/site";
 import NextLink from "next/link";
 import clsx from "clsx";
-import { ThemeSwitch } from "@/components/theme-switch";
 import { CartIcon, SearchIcon } from "@/components/icons";
 import ProfileDropdown from "./profile-dropdown";
 import { Logo } from "@/components/icons";
@@ -25,6 +23,8 @@ import CategoryDropdown from "./category-dropdown";
 import PhoneMenuAccordion from "./phone-menu-accordion";
 import { signInWithGoogle } from "@/app/connections/signIn";
 import { signOut } from "@/app/connections/signOut";
+import Cart from "./cart";
+import { Skeleton } from "@nextui-org/react";
 
 export const Navbar = () => {
   const searchInput = (
@@ -47,8 +47,14 @@ export const Navbar = () => {
     window.location.href = "/";
   };
 
-  const { sessionData, setSessionData, loading, setLoading } =
-    useUserDataContext();
+  const {
+    sessionData,
+    setSessionData,
+    loading,
+    setLoading,
+    openCart,
+    setOpenCart,
+  } = useUserDataContext();
 
   return (
     <NextUINavbar maxWidth="xl" position="sticky">
@@ -102,34 +108,46 @@ export const Navbar = () => {
         </ul>
       </NavbarContent>
 
-      <NavbarContent
-        className="hidden md:flex basis-1/5 sm:basis-full"
-        justify="end"
-      >
-        <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
-        {sessionData !== null && loading === false && (
-          <NavbarItem className="hidden md:flex">
-            <NextLink href="/cart">
-              <Button
-                className="text-sm font-normal text-default-600 bg-default-100"
-                href="#"
-                startContent={<CartIcon />}
-                variant="flat"
-              >
-                Cart
-              </Button>
-            </NextLink>
+      {loading ? (
+        <div className="max-w-[300px] w-full hidden md:flex items-center">
+          <div className="w-full flex flex-col gap-2 mr-2 items-end">
+            <Skeleton className="h-3 w-4/5 rounded-lg" />
+            <Skeleton className="h-3 w-3/5 rounded-lg" />
+          </div>
+          <div>
+            <Skeleton className="flex rounded-full w-9 h-9" />
+          </div>
+        </div>
+      ) : (
+        <NavbarContent
+          className="hidden md:flex basis-1/5 sm:basis-full"
+          justify="end"
+        >
+          <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
+          {sessionData !== null && loading === false && (
+            <>
+              <NavbarItem className="hidden md:flex">
+                <Button
+                  className="text-sm font-normal text-default-600 bg-default-100"
+                  startContent={<CartIcon />}
+                  variant="flat"
+                  onClick={() => setOpenCart(true)}
+                >
+                  Cart
+                </Button>
+              </NavbarItem>
+              <Cart />
+            </>
+          )}
+          <NavbarItem>
+            <ProfileDropdown />
           </NavbarItem>
-        )}
-        <NavbarItem>
-          <ProfileDropdown />
-        </NavbarItem>
-      </NavbarContent>
+        </NavbarContent>
+      )}
 
       <NavbarContent className="md:hidden basis-1 pl-4" justify="end">
         <NavbarMenuToggle />
       </NavbarContent>
-
       <NavbarMenu>
         {searchInput}
         <div className="mx-4 mt-2 flex flex-col gap-2">

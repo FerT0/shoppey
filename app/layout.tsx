@@ -35,6 +35,7 @@ export default function RootLayout({
   const [sessionData, setSessionData] = useState(null);
   const [productsData, setProductsData] = useState(null);
   const [loading, setLoading] = useState<boolean>(true);
+  const [openCart, setOpenCart] = useState(false);
 
   const fetchData = async () => {
     const responseSession = await getCurrentSession();
@@ -68,6 +69,8 @@ export default function RootLayout({
                 setLoading,
                 productsData,
                 setProductsData,
+                openCart,
+                setOpenCart,
               }}
             >
               {children}

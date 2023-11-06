@@ -11,11 +11,11 @@ export default function Home() {
       <Navbar />
       <main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow">
         <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-          <div className="inline-block max-w-lg text-center justify-center">
+          <div className="inline-block max-w-lg text-center justify-center ">
             <h1 className={title()}>Get&nbsp;</h1>
-            <h1 className={title({ color: "violet" })}>anything&nbsp;</h1>
+            <h1 className={title({ color: "violet" })}>everything&nbsp;</h1>
             <br />
-            <h1 className={title()}>that you need.</h1>
+            <h1 className={title()}>you need.</h1>
             <h2 className={subtitle({ class: "mt-4" })}>Start shopping now.</h2>
           </div>
 
