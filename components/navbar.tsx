@@ -47,14 +47,7 @@ export const Navbar = () => {
     window.location.href = "/";
   };
 
-  const {
-    sessionData,
-    setSessionData,
-    loading,
-    setLoading,
-    openCart,
-    setOpenCart,
-  } = useUserDataContext();
+  const { sessionData, loading, setOpenCart } = useUserDataContext();
 
   return (
     <NextUINavbar maxWidth="xl" position="sticky">

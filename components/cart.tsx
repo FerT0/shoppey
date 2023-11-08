@@ -4,16 +4,11 @@ import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { useUserDataContext } from "@/app/contexts/userdata-context";
 import { getCart } from "@/app/connections/getCart";
+import { removeFromCart } from "@/app/connections/removeFromCart";
 
 export default function Cart() {
-  const {
-    sessionData,
-    setSessionData,
-    loading,
-    setLoading,
-    openCart,
-    setOpenCart,
-  } = useUserDataContext();
+  const { sessionData, openCart, setOpenCart, cartTrigger, setCartTrigger } =
+    useUserDataContext();
 
   const [cartData, setCartData] = useState([]);
   const [cartLoading, setCartLoading] = useState<boolean>(true);
@@ -24,11 +19,22 @@ export default function Cart() {
     setCartData(responseCart);
   };
 
+  const deleteProductFromCart = async (arg: number) => {
+    await removeFromCart(arg, sessionData.user.id);
+    setCartTrigger(cartTrigger + 1);
+  };
+
   useEffect(() => {
     fetchCartData().then(async (res) => {
       setCartLoading(false);
     });
   }, []);
+
+  useEffect(() => {
+    fetchCartData().then(async (res) => {
+      setCartLoading(false);
+    });
+  }, [cartTrigger]);
 
   return (
     <>
@@ -121,6 +127,9 @@ export default function Cart() {
                                         <button
                                           type="button"
                                           className="font-medium text-indigo-600 hover:text-indigo-500"
+                                          onClick={() =>
+                                            deleteProductFromCart(product.id)
+                                          }
                                         >
                                           Remove
                                         </button>

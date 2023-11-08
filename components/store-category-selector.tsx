@@ -1,11 +1,12 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { Badge } from "@nextui-org/react";
 import { Button } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
 import { useCallback } from "react";
 import { usePathname } from "next/navigation";
+import { CloseCategory } from "./icons";
 
 interface IProps {
   name: string;
@@ -14,6 +15,7 @@ interface IProps {
 export default function StoreCategorySelector(props: IProps) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
+  const category = searchParams.get("category");
 
   const createQueryString = useCallback(
     (name: string, value: string) => {
@@ -25,20 +27,44 @@ export default function StoreCategorySelector(props: IProps) {
     [searchParams]
   );
 
+  function timeout(delay) {
+    return new Promise((res) => setTimeout(res, delay));
+  }
+
+  const handleCategory = async () => {
+    await timeout(100);
+    router.push(pathname + "?" + createQueryString("category", props.name));
+  };
+
   const router = useRouter();
   return (
-    <Badge content="5" color="primary">
-      <Button
-        color="primary"
-        className="capitalize"
-        onClick={() =>
-          router.push(
-            pathname + "?" + createQueryString("category", props.name)
-          )
-        }
-      >
-        {props.name}
-      </Button>
-    </Badge>
+    <>
+      {props.name === category ? (
+        <Badge
+          content={<CloseCategory />}
+          isOneChar
+          color="danger"
+          size="md"
+          onClick={() => router.push(pathname)}
+          className="cursor-pointer"
+          variant="shadow"
+        >
+          <Button
+            color="primary"
+            className="capitalize bg-white text-black border-[#c5c5c5] border-1 border-solid"
+          >
+            {props.name}
+          </Button>
+        </Badge>
+      ) : (
+        <Button
+          color="primary"
+          className="capitalize bg-white text-black border-[#c5c5c5] border-1 border-solid"
+          onClick={() => handleCategory()}
+        >
+          {props.name}
+        </Button>
+      )}
+    </>
   );
 }

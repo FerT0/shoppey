@@ -206,6 +206,23 @@ export const CartIcon = (props: IconSvgProps) => (
   </svg>
 );
 
+export const CloseCategory = (props: IconSvgProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="1em"
+    height="1em"
+    viewBox="0 0 24 24"
+  >
+    <path
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeWidth="2"
+      d="M17 17L7 7m10 0L7 17"
+    />
+  </svg>
+);
+
 export const ChevronDown = (props: IconSvgProps) => (
   <svg
     aria-hidden="true"
