@@ -208,18 +208,33 @@ export const CartIcon = (props: IconSvgProps) => (
 
 export const CloseCategory = (props: IconSvgProps) => (
   <svg
+    aria-hidden="true"
+    fill="none"
+    focusable="false"
+    height="1em"
+    role="presentation"
+    viewBox="0 0 24 24"
+    width="1em"
+    {...props}
+  >
+    <path
+      d="M17 17L7 7m10 0L7 17"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+    />
+  </svg>
+);
+
+export const AddProductIcon = (props: IconSvgProps) => (
+  <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
     height="1em"
     viewBox="0 0 24 24"
   >
-    <path
-      fill="none"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeWidth="2"
-      d="M17 17L7 7m10 0L7 17"
-    />
+    <path fill="currentColor" d="M11 13H5v-2h6V5h2v6h6v2h-6v6h-2v-6Z" />
   </svg>
 );
 

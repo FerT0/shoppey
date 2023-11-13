@@ -71,7 +71,7 @@ export default function DealsLanding() {
                         </div>
                         <div className="mt-4 flex justify-between">
                           <div>
-                            <h3 className="text-sm text-gray-700 overflow-hidden text-ellipsis whitespace-nowrap block w-64">
+                            <h3 className="text-sm font-semibold text-[#231f1e] overflow-hidden text-ellipsis whitespace-nowrap block w-60">
                               <span
                                 aria-hidden="true"
                                 className="absolute inset-0"
@@ -81,9 +81,15 @@ export default function DealsLanding() {
                             <p className="mt-1 text-sm text-gray-500 overflow-hidden text-ellipsis whitespace-nowrap block w-64">
                               {product.product_description}
                             </p>
+                            <p className="mt-1 text-sm text-gray-500 overflow-hidden text-ellipsis whitespace-nowrap block w-64">
+                              Posted by{" "}
+                              <label className=" font-semibold">
+                                {product.posted_by_name}
+                              </label>
+                            </p>
                           </div>
                           <p className="text-sm font-medium text-gray-900">
-                            {product.product_price}
+                            ${product.product_price}
                           </p>
                         </div>
                         <Button

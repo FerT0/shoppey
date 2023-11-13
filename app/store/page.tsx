@@ -13,6 +13,10 @@ import { addToCart } from "../connections/addToCart";
 import { useUserDataContext } from "../contexts/userdata-context";
 import NotLoggedInModal from "@/components/not-logged-in-modal";
 import { useDisclosure } from "@nextui-org/react";
+import NewProduct from "@/components/new-product";
+
+import store_img from "../../images/store_img.png";
+import Image from "next/image";
 
 export default function Store() {
   const searchParams = useSearchParams();
@@ -70,8 +74,25 @@ export default function Store() {
       <Navbar />
       <section>
         <NotLoggedInModal is={isOpen} on={onOpen} change={onOpenChange} />
+        <div className="flex items-center justify-center bg-[#ffe6cc] gap-0 md:gap-36 p-8 h-96">
+          <div className="flex flex-col">
+            <h2 className="text-6xl capitalize m-0 text-[#333] font-bold">
+              Get 5% Cash Back
+            </h2>
+            <p className="text-2xl font-medium text-[#333] mt-2">
+              on Shoppey.com
+            </p>
+          </div>
+          <div>
+            <Image
+              src={store_img}
+              alt="store img"
+              className="hidden md:flex"
+            ></Image>
+          </div>
+        </div>
         <div className="bg-white">
-          <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+          <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 py-16">
             <h2 className="text-2xl font-bold tracking-tight text-[#333]">
               Todays Best Deals For You!
             </h2>
@@ -81,6 +102,12 @@ export default function Store() {
                   <StoreCategorySelector name={category.name} />
                 </div>
               ))}
+              <div className="hidden lg:flex ml-auto">
+                <NewProduct />
+              </div>
+            </div>
+            <div className="hidden md:flex lg:hidden mt-4">
+              <NewProduct />
             </div>
 
             {productsLoading ? (
@@ -101,20 +128,20 @@ export default function Store() {
                     </div>
                     <div className="mt-4 flex justify-between">
                       <div>
-                        <h3 className="text-sm text-gray-700 overflow-hidden text-ellipsis whitespace-nowrap block w-64">
+                        <h3 className="text-sm font-semibold text-[#231f1e] overflow-hidden text-ellipsis whitespace-nowrap block w-60">
                           <span
                             aria-hidden="true"
                             className="absolute inset-0"
                           />
                           {product.product_name}
                         </h3>
+                        <p className="text-sm font-medium text-[#231f1e]">
+                          ${product.product_price}.00
+                        </p>
                         <p className="mt-1 text-sm text-gray-500 overflow-hidden text-ellipsis whitespace-nowrap block w-64">
                           {product.product_description}
                         </p>
                       </div>
-                      <p className="text-sm font-medium text-gray-900">
-                        {product.product_price}
-                      </p>
                     </div>
                     <Button
                       color="primary"
