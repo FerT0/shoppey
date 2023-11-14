@@ -8,6 +8,7 @@ import { siteConfig } from "@/config/site";
 
 import { ChevronDown } from "./icons";
 import CategoryDropdownCard from "./category-dropdown-card";
+import styles from "./navbar.module.css";
 
 export default function CategoryDropdown() {
   return (
@@ -17,7 +18,7 @@ export default function CategoryDropdown() {
           <a
             className={clsx(
               linkStyles({ color: "foreground" }),
-              "data-[active=true]:text-primary data-[active=true]:font-medium cursor-pointer flex gap-2 font-medium"
+              `data-[active=true]:text-primary data-[active=true]:font-medium cursor-pointer flex gap-2 font-medium ${styles.navbar_option}`
             )}
           >
             Category

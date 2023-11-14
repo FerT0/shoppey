@@ -3,6 +3,9 @@ import { Navbar } from "@/components/navbar";
 import CategoriesLanding from "@/components/categories-landing";
 import DealsLanding from "@/components/deals-landing";
 import { Button } from "@nextui-org/button";
+import DiscountsLanding from "@/components/discounts-landing";
+import WeeklyPopularLanding from "@/components/weekly-popular-landing";
+import BannerLanding from "@/components/banner-landing";
 
 export default function Home() {
   return (
@@ -32,7 +35,9 @@ export default function Home() {
       </section>
       <CategoriesLanding />
       <DealsLanding />
-      <CategoriesLanding />
+      <DiscountsLanding />
+      <WeeklyPopularLanding />
+      <BannerLanding />
     </>
   );
 }

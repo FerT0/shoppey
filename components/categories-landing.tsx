@@ -45,7 +45,7 @@ export default function CategoriesLanding() {
               <Link
                 href={{
                   pathname: `/store`,
-                  query: { category: `handbags` },
+                  query: { category: `bags` },
                 }}
               >
                 <div className="group relative">

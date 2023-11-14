@@ -1,0 +1,21 @@
+.navbar_option::after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background-color: hsl(
+    var(--nextui-success-600) /
+      var(--nextui-success-600-opacity, var(--tw-bg-opacity))
+  );
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+  top: 135%;
+}
+
+.navbar_option:hover::after {
+  width: 100%;
+  left: 0;
+}

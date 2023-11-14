@@ -25,6 +25,7 @@ import { signInWithGoogle } from "@/app/connections/signIn";
 import { signOut } from "@/app/connections/signOut";
 import Cart from "./cart";
 import { Skeleton } from "@nextui-org/react";
+import styles from "./navbar.module.css";
 
 export const Navbar = () => {
   const searchInput = (
@@ -54,8 +55,7 @@ export const Navbar = () => {
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
           <NextLink className="flex justify-start items-center gap-1" href="/">
-            <Logo />
-            <p className="font-bold text-inherit">SHOPPEY</p>
+            <p className="font-bold text-success-600">SHOPPEY</p>
           </NextLink>
         </NavbarBrand>
         <ul className="hidden md:flex gap-4 justify-start ml-2">
@@ -66,7 +66,7 @@ export const Navbar = () => {
             <NextLink
               className={clsx(
                 linkStyles({ color: "foreground" }),
-                "data-[active=true]:text-primary data-[active=true]:font-medium font-medium"
+                `data-[active=true]:text-primary data-[active=true]:font-medium font-medium ${styles.navbar_option}`
               )}
               color="foreground"
               href="#"
@@ -78,7 +78,7 @@ export const Navbar = () => {
             <NextLink
               className={clsx(
                 linkStyles({ color: "foreground" }),
-                "data-[active=true]:text-primary data-[active=true]:font-medium font-medium"
+                `data-[active=true]:text-primary data-[active=true]:font-medium font-medium ${styles.navbar_option}`
               )}
               color="foreground"
               href="#"
@@ -90,7 +90,7 @@ export const Navbar = () => {
             <NextLink
               className={clsx(
                 linkStyles({ color: "foreground" }),
-                "data-[active=true]:text-primary data-[active=true]:font-medium font-medium"
+                `data-[active=true]:text-primary data-[active=true]:font-medium font-medium ${styles.navbar_option}`
               )}
               color="foreground"
               href="/store"

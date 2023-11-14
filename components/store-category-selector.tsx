@@ -31,12 +31,13 @@ export default function StoreCategorySelector(props: IProps) {
     return new Promise((res) => setTimeout(res, delay));
   }
 
+  const router = useRouter();
+
   const handleCategory = async () => {
     await timeout(100);
     router.push(pathname + "?" + createQueryString("category", props.name));
   };
 
-  const router = useRouter();
   return (
     <>
       {props.name === category ? (
