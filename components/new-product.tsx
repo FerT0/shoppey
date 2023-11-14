@@ -82,8 +82,7 @@ export default function NewProduct() {
       {sessionData !== null && (
         <>
           <Button
-            color="success"
-            className="text-white"
+            className="text-white bg-success-600"
             startContent={<AddProductIcon />}
             onPress={onOpen}
           >
@@ -185,8 +184,7 @@ export default function NewProduct() {
                         Close
                       </Button>
                       <Button
-                        color="success"
-                        className="text-white"
+                        className="text-white bg-success-600"
                         type="submit"
                       >
                         Post product

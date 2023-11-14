@@ -62,7 +62,7 @@ export default function DealsLanding() {
                   {productsData.slice(0, 6).map((product, index) => (
                     <SwiperSlide key={index}>
                       <div key={product.id} className="group relative pb-6">
-                        <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-[#f5f6f6] lg:aspect-none lg:h-80">
+                        <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-[#f5f6f6] lg:aspect-none lg:h-80 group">
                           <img
                             src={product.product_picture}
                             alt={product.product_name}
@@ -78,23 +78,17 @@ export default function DealsLanding() {
                               />
                               {product.product_name}
                             </h3>
+                            <p className="text-sm font-medium text-[#231f1e]">
+                              ${product.product_price}
+                            </p>
                             <p className="mt-1 text-sm text-gray-500 overflow-hidden text-ellipsis whitespace-nowrap block w-64">
                               {product.product_description}
                             </p>
-                            <p className="mt-1 text-sm text-gray-500 overflow-hidden text-ellipsis whitespace-nowrap block w-64">
-                              Posted by{" "}
-                              <label className=" font-semibold">
-                                {product.posted_by_name}
-                              </label>
-                            </p>
                           </div>
-                          <p className="text-sm font-medium text-gray-900">
-                            ${product.product_price}
-                          </p>
                         </div>
                         <Button
                           color="primary"
-                          className="mt-2"
+                          className="mt-2 bg-transparent text-black border-solid border-1 hover:bg-success-600 hover:text-white hover:border-success-600"
                           onClick={() => addProductToCart(product.id)}
                         >
                           Add to cart

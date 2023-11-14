@@ -9,6 +9,12 @@ import { useEffect, useState } from "react";
 import { getCurrentSession } from "./connections/getSession";
 import { getAllProducts } from "./connections/getAllProducts";
 import UserDataContext from "./contexts/userdata-context";
+import { Inter } from "next/font/google";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -62,22 +68,24 @@ export default function RootLayout({
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "light" }}>
           <div className="relative flex flex-col h-screen">
-            <UserDataContext.Provider
-              value={{
-                sessionData,
-                setSessionData,
-                loading,
-                setLoading,
-                productsData,
-                setProductsData,
-                openCart,
-                setOpenCart,
-                cartTrigger,
-                setCartTrigger,
-              }}
-            >
-              {children}
-            </UserDataContext.Provider>
+            <div className={inter.className}>
+              <UserDataContext.Provider
+                value={{
+                  sessionData,
+                  setSessionData,
+                  loading,
+                  setLoading,
+                  productsData,
+                  setProductsData,
+                  openCart,
+                  setOpenCart,
+                  cartTrigger,
+                  setCartTrigger,
+                }}
+              >
+                {children}
+              </UserDataContext.Provider>
+            </div>
           </div>
         </Providers>
       </body>

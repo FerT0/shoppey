@@ -29,7 +29,10 @@ export default function NotLoggedInModal(props) {
                 <Button color="danger" variant="light" onPress={onClose}>
                   Close
                 </Button>
-                <Button color="primary" onClick={() => signInWithGoogle()}>
+                <Button
+                  className="bg-success-600 text-white"
+                  onClick={() => signInWithGoogle()}
+                >
                   Sign in with Google
                 </Button>
               </ModalFooter>

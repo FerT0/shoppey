@@ -46,7 +46,9 @@ export default function ProfileDropdown() {
               src={sessionData.user.identities[0].identity_data.avatar_url}
               size="sm"
               className="hover:cursor-pointer"
-              color="primary"
+              classNames={{
+                base: "bg-success-600 ring-success-600",
+              }}
             />
           </DropdownTrigger>
           <DropdownMenu

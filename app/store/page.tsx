@@ -114,6 +114,10 @@ export default function Store() {
               <Spinner
                 className="mt-6 flex justify-center h-[40vh]"
                 size="lg"
+                classNames={{
+                  circle1: "border-b-success-600",
+                  circle2: "border-b-success-600",
+                }}
               />
             ) : (
               <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-5">
@@ -144,8 +148,7 @@ export default function Store() {
                       </div>
                     </div>
                     <Button
-                      color="primary"
-                      className="mt-2"
+                      className="mt-2 bg-transparent text-black border-solid border-1 hover:bg-success-600 hover:text-white hover:border-success-600"
                       onClick={() => addProductToCart(product.id)}
                     >
                       Add to cart
