@@ -33,7 +33,14 @@ export default function WeeklyPopularLanding() {
           </h2>
 
           {loading ? (
-            <Spinner className="mt-6 flex justify-center h-[40vh]" size="lg" />
+            <Spinner
+              className="mt-6 flex justify-center h-[40vh]"
+              size="lg"
+              classNames={{
+                circle1: "border-b-success-600",
+                circle2: "border-b-success-600",
+              }}
+            />
           ) : (
             <>
               <Swiper
@@ -62,11 +69,11 @@ export default function WeeklyPopularLanding() {
                   {productsData.slice(6, 12).map((product, index) => (
                     <SwiperSlide key={index}>
                       <div key={product.id} className="group relative pb-6">
-                        <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-[#f5f6f6] lg:aspect-none lg:h-80 group">
+                        <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-[#f5f6f6] lg:aspect-none h-80 flex justify-center items-center">
                           <img
                             src={product.product_picture}
                             alt={product.product_name}
-                            className="h-full w-full object-cover object-center  lg:h-full lg:w-full group-hover:scale-125 ease-in duration-150"
+                            className="object-cover group-hover:scale-125 ease-in duration-150 lg:aspect-none h-80"
                           />
                         </div>
                         <div className="mt-4 flex justify-between">
@@ -87,7 +94,6 @@ export default function WeeklyPopularLanding() {
                           </div>
                         </div>
                         <Button
-                          color="primary"
                           className="mt-2 bg-transparent text-black border-solid border-1 hover:bg-success-600 hover:text-white hover:border-success-600"
                           onClick={() => addProductToCart(product.id)}
                         >

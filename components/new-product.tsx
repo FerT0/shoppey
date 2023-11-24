@@ -30,8 +30,10 @@ export default function NewProduct() {
   const [isFileTooBig, setIsFileTooBig] = useState(false);
   const [isFileEmptyError, setIsFileEmptyError] = useState(false);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const [isPosting, setIsPosting] = useState<boolean>(false);
 
   const handleSubmit = async (event) => {
+    setIsPosting(true);
     event.preventDefault();
 
     if (file === undefined) {
@@ -183,12 +185,18 @@ export default function NewProduct() {
                       <Button color="danger" variant="flat" onPress={onClose}>
                         Close
                       </Button>
-                      <Button
-                        className="text-white bg-success-600"
-                        type="submit"
-                      >
-                        Post product
-                      </Button>
+                      {isPosting ? (
+                        <Button className="text-white bg-success-600" isLoading>
+                          Posting product
+                        </Button>
+                      ) : (
+                        <Button
+                          className="text-white bg-success-600"
+                          type="submit"
+                        >
+                          Post product
+                        </Button>
+                      )}
                     </ModalFooter>
                   </>
                 )}

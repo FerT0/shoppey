@@ -6,6 +6,8 @@ import { Button } from "@nextui-org/button";
 import DiscountsLanding from "@/components/discounts-landing";
 import WeeklyPopularLanding from "@/components/weekly-popular-landing";
 import BannerLanding from "@/components/banner-landing";
+import TopSellersLanding from "@/components/top-sellers-landing";
+import ServicesLanding from "@/components/services-landing";
 
 export default function Home() {
   return (
@@ -38,6 +40,8 @@ export default function Home() {
       <DiscountsLanding />
       <WeeklyPopularLanding />
       <BannerLanding />
+      <TopSellersLanding />
+      <ServicesLanding />
     </>
   );
 }

@@ -31,7 +31,7 @@ export default function CategoryDropdown() {
               <h4 className="text-medium font-medium">Popular Categories</h4>
             </div>
             <Divider className="my-4" />
-            <div className="items-center text-small grid grid-rows-3 grid-cols-2">
+            <div className="items-center text-small grid grid-rows-3 grid-cols-2 gap-4">
               {siteConfig.categories.map((category) => (
                 <div key={category.name}>
                   <CategoryDropdownCard name={category.name} />

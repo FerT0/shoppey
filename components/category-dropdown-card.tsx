@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import { Card, CardBody } from "@nextui-org/react";
+
+import { Button } from "@nextui-org/button";
 
 interface IProps {
   name: string;
@@ -14,11 +15,9 @@ export default function CategoryDropdownCard(props: IProps) {
         query: { category: `${props.name}` },
       }}
     >
-      <Card shadow="none" isHoverable isPressable>
-        <CardBody>
-          <p className="capitalize">{props.name}</p>
-        </CardBody>
-      </Card>
+      <Button className="capitalize w-full bg-white text-black hover:border-[#c5c5c5] border-1 border-solid border-transparent py-4">
+        {props.name}
+      </Button>
     </Link>
   );
 }

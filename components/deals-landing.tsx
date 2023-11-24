@@ -33,7 +33,14 @@ export default function DealsLanding() {
           </h2>
 
           {loading ? (
-            <Spinner className="mt-6 flex justify-center h-[40vh]" size="lg" />
+            <Spinner
+              className="mt-6 flex justify-center h-[40vh]"
+              size="lg"
+              classNames={{
+                circle1: "border-b-success-600",
+                circle2: "border-b-success-600",
+              }}
+            />
           ) : (
             <>
               <Swiper

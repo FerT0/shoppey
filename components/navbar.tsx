@@ -17,17 +17,18 @@ import NextLink from "next/link";
 import clsx from "clsx";
 import { CartIcon, SearchIcon } from "@/components/icons";
 import ProfileDropdown from "./profile-dropdown";
-import { Logo } from "@/components/icons";
 import { useUserDataContext } from "@/app/contexts/userdata-context";
 import CategoryDropdown from "./category-dropdown";
 import PhoneMenuAccordion from "./phone-menu-accordion";
 import { signInWithGoogle } from "@/app/connections/signIn";
 import { signOut } from "@/app/connections/signOut";
 import Cart from "./cart";
-import { Skeleton } from "@nextui-org/react";
+import { Skeleton } from "@nextui-org/skeleton";
 import styles from "./navbar.module.css";
 
 export const Navbar = () => {
+  const { sessionData, loading, setOpenCart, productsData } =
+    useUserDataContext();
   const searchInput = (
     <Input
       aria-label="Search"
@@ -47,8 +48,6 @@ export const Navbar = () => {
   const handleRefresh = (): void => {
     window.location.href = "/";
   };
-
-  const { sessionData, loading, setOpenCart } = useUserDataContext();
 
   return (
     <NextUINavbar maxWidth="xl" position="sticky" isBlurred={false}>
