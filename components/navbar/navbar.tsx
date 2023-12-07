@@ -82,7 +82,7 @@ export const Navbar = () => {
               color="foreground"
               href="#"
             >
-              What's new
+              What&apos;s new
             </NextLink>
           </NavbarItem>
           <NavbarItem>

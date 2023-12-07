@@ -18,7 +18,7 @@ export default function NotLoggedInModal(props) {
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1">
-                You're not logged in!
+                You&apos;re not logged in!
               </ModalHeader>
               <ModalBody>
                 <p>
