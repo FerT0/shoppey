@@ -1,7 +1,6 @@
 "use client";
 import "@/styles/globals.css";
 import { Metadata } from "next";
-import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
 import { Providers } from "./providers";
 import clsx from "clsx";
@@ -43,7 +42,10 @@ export default function RootLayout({
   }, []);
   return (
     <html lang="en" suppressHydrationWarning>
-      <head />
+      <head>
+        <title>Shoppey</title>
+        <meta name="description" content="Shoppey | E-commerce website" />
+      </head>
       <body
         className={clsx(
           "min-h-screen bg-background font-sans antialiased",
