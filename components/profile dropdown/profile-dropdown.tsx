@@ -10,7 +10,7 @@ import {
 } from "@nextui-org/dropdown";
 import { User } from "@nextui-org/user";
 import { Skeleton } from "@nextui-org/skeleton";
-import { CartIcon } from "./icons";
+import { CartIcon } from "../icons/icons";
 import { signInWithGoogle } from "@/app/connections/signIn";
 import { signOut } from "@/app/connections/signOut";
 import { useUserDataContext } from "@/app/contexts/userdata-context";
@@ -94,8 +94,12 @@ export default function ProfileDropdown() {
                   }}
                 />
               </DropdownItem>
-              <DropdownItem key="dashboard">Dashboard</DropdownItem>
-              <DropdownItem key="settings">Settings</DropdownItem>
+              <DropdownItem
+                onClick={() => router.push("/store")}
+                key="dashboard"
+              >
+                Shop now
+              </DropdownItem>
 
               <DropdownItem
                 key="new_project"
@@ -106,34 +110,7 @@ export default function ProfileDropdown() {
               </DropdownItem>
             </DropdownSection>
 
-            <DropdownSection aria-label="Preferences" showDivider>
-              <DropdownItem key="quick_search" shortcut="⌘K">
-                Quick search
-              </DropdownItem>
-              <DropdownItem
-                isReadOnly
-                key="theme"
-                className="cursor-default"
-                endContent={
-                  <select
-                    className="z-10 outline-none w-16 py-0.5 rounded-md text-tiny group-data-[hover=true]:border-default-500 border-small border-default-300 dark:border-default-200 bg-transparent text-default-500"
-                    id="theme"
-                    name="theme"
-                  >
-                    <option>System</option>
-                    <option>Dark</option>
-                    <option>Light</option>
-                  </select>
-                }
-              >
-                Theme
-              </DropdownItem>
-            </DropdownSection>
-
             <DropdownSection aria-label="Help & Feedback">
-              <DropdownItem key="help_and_feedback">
-                Help & Feedback
-              </DropdownItem>
               <DropdownItem
                 key="logout"
                 onClick={() => {

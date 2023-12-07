@@ -1,11 +1,11 @@
 import React from "react";
 import Image from "next/image";
-import furniture from "../images/furniture.png";
-import bag from "../images/bag.png";
-import books from "../images/books.png";
-import tech from "../images/tech.png";
-import sneakers from "../images/sneakers.png";
-import travel from "../images/travel.png";
+import furniture from "../../images/furniture.png";
+import bag from "../../images/bag.png";
+import books from "../../images/books.png";
+import tech from "../../images/tech.png";
+import sneakers from "../../images/sneakers.png";
+import travel from "../../images/travel.png";
 import Link from "next/link";
 export default function CategoriesLanding() {
   return (

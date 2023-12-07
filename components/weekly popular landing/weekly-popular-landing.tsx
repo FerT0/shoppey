@@ -8,9 +8,9 @@ import { Button } from "@nextui-org/react";
 import { Spinner } from "@nextui-org/react";
 import { addToCart } from "@/app/connections/addToCart";
 import { useDisclosure } from "@nextui-org/react";
-import NotLoggedInModal from "./not-logged-in-modal";
+import NotLoggedInModal from "../not logged in modal/not-logged-in-modal";
 
-export default function DealsLanding() {
+export default function WeeklyPopularLanding() {
   const { sessionData, loading, productsData, cartTrigger, setCartTrigger } =
     useUserDataContext();
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -29,7 +29,7 @@ export default function DealsLanding() {
       <div className="bg-white">
         <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 pt-20">
           <h2 className="text-2xl font-bold tracking-tight text-[#333]">
-            Todays Best Deals For You!
+            Weekly Popular Products
           </h2>
 
           {loading ? (
@@ -48,7 +48,7 @@ export default function DealsLanding() {
                 spaceBetween={20}
                 slidesPerView={4}
                 navigation
-                className="mt-6 pb-6"
+                className="my-6 pb-6"
                 scrollbar={{ draggable: true }}
                 breakpoints={{
                   1090: {
@@ -66,14 +66,14 @@ export default function DealsLanding() {
                 }}
               >
                 <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-5">
-                  {productsData.slice(0, 6).map((product, index) => (
+                  {productsData.slice(6, 12).map((product, index) => (
                     <SwiperSlide key={index}>
                       <div key={product.id} className="group relative pb-6">
-                        <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-[#f5f6f6] lg:aspect-none lg:h-80 group">
+                        <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-[#f5f6f6] lg:aspect-none h-80 flex justify-center items-center">
                           <img
                             src={product.product_picture}
                             alt={product.product_name}
-                            className="h-full w-full object-cover object-center  lg:h-full lg:w-full group-hover:scale-125 ease-in duration-150"
+                            className="object-cover group-hover:scale-125 ease-in duration-150 lg:aspect-none h-80"
                           />
                         </div>
                         <div className="mt-4 flex justify-between">
@@ -94,7 +94,6 @@ export default function DealsLanding() {
                           </div>
                         </div>
                         <Button
-                          color="primary"
                           className="mt-2 bg-transparent text-black border-solid border-1 hover:bg-success-600 hover:text-white hover:border-success-600"
                           onClick={() => addProductToCart(product.id)}
                         >

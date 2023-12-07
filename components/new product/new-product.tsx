@@ -13,7 +13,7 @@ import {
 } from "@nextui-org/react";
 import { Select, SelectItem } from "@nextui-org/react";
 import { useUserDataContext } from "@/app/contexts/userdata-context";
-import { AddProductIcon } from "./icons";
+import { AddProductIcon } from "../icons/icons";
 import { siteConfig } from "@/config/site";
 import { postProduct } from "@/app/connections/postProduct";
 

@@ -3,7 +3,7 @@ import React from "react";
 import { useUserDataContext } from "@/app/contexts/userdata-context";
 import { useDisclosure } from "@nextui-org/react";
 import { addToCart } from "@/app/connections/addToCart";
-import NotLoggedInModal from "./not-logged-in-modal";
+import NotLoggedInModal from "../not logged in modal/not-logged-in-modal";
 import { Spinner } from "@nextui-org/react";
 import { Button } from "@nextui-org/react";
 

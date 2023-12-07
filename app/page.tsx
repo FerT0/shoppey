@@ -1,13 +1,13 @@
 import { Link } from "@nextui-org/link";
-import { Navbar } from "@/components/navbar";
-import CategoriesLanding from "@/components/categories-landing";
-import DealsLanding from "@/components/deals-landing";
+import { Navbar } from "@/components/navbar/navbar";
+import CategoriesLanding from "@/components/categories landing/categories-landing";
+import DealsLanding from "@/components/deals landing/deals-landing";
 import { Button } from "@nextui-org/button";
-import DiscountsLanding from "@/components/discounts-landing";
-import WeeklyPopularLanding from "@/components/weekly-popular-landing";
-import BannerLanding from "@/components/banner-landing";
-import TopSellersLanding from "@/components/top-sellers-landing";
-import ServicesLanding from "@/components/services-landing";
+import DiscountsLanding from "@/components/discounts landing/discounts-landing";
+import WeeklyPopularLanding from "@/components/weekly popular landing/weekly-popular-landing";
+import BannerLanding from "@/components/banner landing/banner-landing";
+import TopSellersLanding from "@/components/top sellers landing/top-sellers-landing";
+import ServicesLanding from "@/components/services landing/services-landing";
 
 export default function Home() {
   return (

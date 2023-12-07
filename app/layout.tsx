@@ -21,11 +21,12 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const [sessionData, setSessionData] = useState(null);
+  const [sessionData, setSessionData] = useState(undefined);
   const [productsData, setProductsData] = useState(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [openCart, setOpenCart] = useState(false);
   const [cartTrigger, setCartTrigger] = useState(0);
+  const [myProductsTrigger, setMyProductsTrigger] = useState(0);
 
   const fetchData = async () => {
     const responseSession = await getCurrentSession();
@@ -64,6 +65,8 @@ export default function RootLayout({
                   setOpenCart,
                   cartTrigger,
                   setCartTrigger,
+                  myProductsTrigger,
+                  setMyProductsTrigger,
                 }}
               >
                 {children}

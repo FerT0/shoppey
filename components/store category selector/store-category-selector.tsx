@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
 import { useCallback } from "react";
 import { usePathname } from "next/navigation";
-import { CloseCategory } from "./icons";
+import { CloseCategory } from "../icons/icons";
 
 interface IProps {
   name: string;

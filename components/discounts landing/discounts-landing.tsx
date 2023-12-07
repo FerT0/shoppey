@@ -1,9 +1,9 @@
 import React from "react";
 import Image from "next/image";
-import furniture from "../images/furniture_discounts.png";
-import books from "../images/books_discounts.png";
-import clothes from "../images/clothes_discounts.png";
-import school from "../images/school_discounts.png";
+import furniture from "../../images/furniture_discounts.png";
+import books from "../../images/books_discounts.png";
+import clothes from "../../images/clothes_discounts.png";
+import school from "../../images/school_discounts.png";
 
 export default function DiscountsLanding() {
   return (

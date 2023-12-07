@@ -6,9 +6,9 @@ import { Divider } from "@nextui-org/react";
 import { Popover, PopoverTrigger, PopoverContent } from "@nextui-org/react";
 import { siteConfig } from "@/config/site";
 
-import { ChevronDown } from "./icons";
-import CategoryDropdownCard from "./category-dropdown-card";
-import styles from "./navbar.module.css";
+import { ChevronDown } from "../icons/icons";
+import CategoryDropdownCard from "../category dropdown card/category-dropdown-card";
+import styles from "../navbar/navbar.module.css";
 
 export default function CategoryDropdown() {
   return (

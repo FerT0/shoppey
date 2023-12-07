@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "next/image";
-import frequently_asked from "../images/frequently_asked.png";
-import online_payment from "../images/online_payment.png";
-import home_delivery from "../images/home_delivery.png";
+import frequently_asked from "../../images/frequently_asked.png";
+import online_payment from "../../images/online_payment.png";
+import home_delivery from "../../images/home_delivery.png";
 import { Divider } from "@nextui-org/react";
 
 export default function ServicesLanding() {

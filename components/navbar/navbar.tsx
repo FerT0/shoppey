@@ -15,14 +15,14 @@ import { Input } from "@nextui-org/input";
 import { link as linkStyles } from "@nextui-org/theme";
 import NextLink from "next/link";
 import clsx from "clsx";
-import { CartIcon, SearchIcon } from "@/components/icons";
-import ProfileDropdown from "./profile-dropdown";
+import { CartIcon, SearchIcon } from "@/components/icons/icons";
+import ProfileDropdown from "../profile dropdown/profile-dropdown";
 import { useUserDataContext } from "@/app/contexts/userdata-context";
-import CategoryDropdown from "./category-dropdown";
-import PhoneMenuAccordion from "./phone-menu-accordion";
+import CategoryDropdown from "../category dropdown/category-dropdown";
+import PhoneMenuAccordion from "../phone menu accordion/phone-menu-accordion";
 import { signInWithGoogle } from "@/app/connections/signIn";
 import { signOut } from "@/app/connections/signOut";
-import Cart from "./cart";
+import Cart from "../cart/cart";
 import { Skeleton } from "@nextui-org/skeleton";
 import styles from "./navbar.module.css";
 
@@ -152,21 +152,11 @@ export const Navbar = () => {
               </NavbarMenuItem>
               <NavbarMenuItem>
                 <Link size="lg" href="/store" color="foreground">
-                  Deals
-                </Link>
-              </NavbarMenuItem>
-              <NavbarMenuItem>
-                <Link size="lg" href="/store" color="foreground">
-                  What's new
-                </Link>
-              </NavbarMenuItem>
-              <NavbarMenuItem>
-                <Link size="lg" href="/store" color="foreground">
                   Cart
                 </Link>
               </NavbarMenuItem>
               <NavbarMenuItem>
-                <Link size="lg" href="/store" color="foreground">
+                <Link size="lg" href="/myproducts" color="foreground">
                   My products
                 </Link>
               </NavbarMenuItem>
@@ -195,22 +185,12 @@ export const Navbar = () => {
                 </Link>
               </NavbarMenuItem>
               <NavbarMenuItem>
-                <Link size="lg" href="/store" color="foreground">
-                  Deals
-                </Link>
-              </NavbarMenuItem>
-              <NavbarMenuItem>
-                <Link size="lg" href="/store" color="foreground">
-                  What's new
-                </Link>
-              </NavbarMenuItem>
-              <NavbarMenuItem>
                 <PhoneMenuAccordion />
               </NavbarMenuItem>
               <NavbarMenuItem>
                 <Link
                   size="lg"
-                  color="primary"
+                  color="success"
                   onClick={() => {
                     signInWithGoogle();
                   }}
